@@ -1,0 +1,616 @@
+$TTL 600        ; TTL for all records in the file is 10 mins; many caching DNS nameservers set their own TTLs regardless of the authoritative records, so it cannot be guaranteed that all downstream DNS servers have the new records, after the TTL has expired
+mnc840.mcc310.gprs.     IN     SOA    dns0.mnc840.mcc310.gprs.   hostmaster.domain.com.  (
+                    2024090301 ; serial
+                    600        ; slaves will refresh after 10 mins
+                    600        ; slaves will retry to refresh every 10 mins if they cannot reach the master
+                    604800     ; if slaves cannot reach us, they will cache for a week before expunging the record and return "domain does not exist"
+                    600 )      ; minimum TTL. This is the minimum time that the external servers should hold the resulst in memory. The real TTL applied by remote server is somewhere between maximum TTL, specified at beginning of file, and this minimum TTL
+
+     IN      NS     dns0.mnc840.mcc310.gprs.
+     IN      NS     dns1.mnc840.mcc310.gprs.
+
+
+
+mnc840.mcc310.gprs.                     IN      A       199.255.4.6
+*.mnc840.mcc310.gprs.                   IN      A       199.255.4.134
+*.com.mnc840.mcc310.gprs.               IN      A       199.255.4.6 ; these records have to be added each type we have a new 2 level domain added below, such as .com
+
+;record for SGSN and radio network
+rac0002.lac0fa0.mnc840.mcc310.gprs.     IN      A       199.255.4.5
+
+
+;no tld
+test.telna.mnc840.mcc310.gprs.          IN      A       199.255.4.6
+soracom.io.mnc840.mcc310.gprs.          IN      A       199.255.4.6
+soracom.io.mnc840.mcc310.gprs.          IN      A       199.255.4.134
+excelsior.mnc840.mcc310.gprs.           IN      A       199.255.4.60
+*.excelsior.mnc840.mcc310.gprs.         IN      A       199.255.4.60
+;doodad.mnc840.mcc310.gprs.              IN      A       199.255.4.60
+;doodad.mnc840.mcc310.gprs.             IN      A       199.255.4.61
+;doodad.mnc840.mcc310.gprs.             IN      A       199.255.4.125
+;doodad.mnc840.mcc310.gprs.             IN      A       199.255.4.125
+;doodad.mnc840.mcc310.gprs.             IN      A        208.80.158.29
+doodad.mnc840.mcc310.gprs.             IN      A        199.255.4.44
+ajay.doodad.test.mnc840.mcc310.gprs.             IN      A   208.80.158.29
+ajay.doodad.mnc840.mcc310.gprs.             IN      A   208.80.158.38
+;doodad.mnc840.mcc310.gprs.             IN      A       199.255.5.52
+;doodad.mnc840.mcc310.gprs.              IN      A       199.255.5.52
+;doodad.mnc840.mcc310.gprs.             IN      A       199.255.4.133
+;doodad.mnc840.mcc310.gprs.              IN      A       199.255.4.125
+halys.mnc840.mcc310.gprs.               IN      A       199.255.4.6
+;knowroaming.mnc840.mcc310.gprs.         IN      A       208.80.158.4
+;knowroaming.mnc840.mcc310.gprs.         IN      A       208.80.158.5
+;knowroaming.mnc840.mcc310.gprs.         IN      A       208.80.158.11
+;knowroaming.mnc840.mcc310.gprs.         IN      A       208.80.158.12
+;knowroaming.mnc840.mcc310.gprs.         IN      A       208.80.158.17
+;knowroaming.mnc840.mcc310.gprs.         IN      A       199.255.4.44
+knowroaming.mnc840.mcc310.gprs.         IN      A       208.80.158.38
+knowroaming.mnc840.mcc310.gprs.         IN      A       199.255.4.44
+rh.mnc840.mcc310.gprs.                  IN      A       208.80.158.38
+;rh.mnc840.mcc310.gprs.                  IN      A       208.80.158.4
+;rh.mnc840.mcc310.gprs.                  IN      A       208.80.158.5
+;rh.mnc840.mcc310.gprs.                  IN      A       208.80.158.11
+;rh.mnc840.mcc310.gprs.                  IN      A       208.80.158.12
+;rh.mnc840.mcc310.gprs.                  IN      A       208.80.158.17
+rh.mnc840.mcc310.gprs.                  IN      A       199.255.4.44
+internet.mnc840.mcc310.gprs.            IN      A       208.80.158.38
+internet.mnc840.mcc310.gprs.            IN      A       199.255.4.44
+cognia.mnc840.mcc310.gprs.              IN      A       199.255.4.6
+data641003.mnc840.mcc310.gprs.          IN      A       199.255.4.6
+montymobile.mnc840.mcc310.gprs.         IN      A       199.255.4.6
+;test GGSN for Aricent
+aricent.mnc840.mcc310.gprs.             IN      A       199.255.4.7
+telnadirect.mnc840.mcc310.gprs.         IN      A       199.255.4.6
+krdev.mnc840.mcc310.gprs.               IN      A       199.255.4.16
+krdevmulti.mnc840.mcc310.gprs.          IN      A       199.255.4.16
+krprod.mnc840.mcc310.gprs.              IN      A       199.255.4.6
+kropen.mnc840.mcc310.gprs.              IN      A       199.255.4.20
+kroldgtp.mnc840.mcc310.gprs.            IN      A       199.255.4.6
+krhalys.mnc840.mcc310.gprs.             IN      A       199.255.4.8
+ggsn.dev.halys.mnc840.mcc310.gprs.      IN      A       199.255.4.14
+gtphub.dev.halys.mnc840.mcc310.gprs.    IN      A       199.255.4.20
+halys2.mnc840.mcc310.gprs.              IN      A       199.255.4.21
+krtel.mnc840.mcc310.gprs.               IN      A       199.255.4.55
+krgtp.mnc840.mcc310.gprs.               IN      A       199.255.4.18
+
+; TELNA-1352
+nzmoeapn.mnc840.mcc310.gprs.               IN      A       199.255.4.250
+nzmoeapn.mnc840.mcc310.gprs.               IN      A       199.255.4.251
+
+;.com
+generationone.com.mnc840.mcc310.gprs.   IN      A       199.255.4.6
+telnamobile.com.mnc840.mcc310.gprs.     IN      A       199.255.4.6
+openroamer.com.mnc840.mcc310.gprs.      IN      A       199.255.4.6
+;openroamer.com.mnc840.mcc310.gprs.     IN      A       199.255.5.52
+krhlr.mnc840.mcc310.gprs.               IN      A       199.255.4.6
+
+dns0.mnc840.mcc310.gprs.                IN      A       199.255.4.2
+dns1.mnc840.mcc310.gprs.                IN      A       199.255.4.3
+
+test-srl.mnc840.mcc310.gprs.            IN      A       199.255.4.11
+
+; for travelping testing (diyan 20170324)
+travelping.mnc840.mcc310.gprs.          IN      A       199.255.4.123
+
+; for travelping 2 testing (diyan 20170328)
+travelping2.mnc840.mcc310.gprs.         IN      A       199.255.4.115
+
+; tvp and grx 5 range testing (diyan 20170331)
+grx5tvp2.mnc840.mcc310.gprs.            IN      A       199.255.5.6
+
+; SGP Testing AW June 22 17
+sgp1.mnc840.mcc310.gprs.                IN      A       199.255.5.52
+
+; Resolve to Sinapore (calce 20180927)
+kroly.mnc840.mcc310.gprs.               IN      A       199.255.4.250
+kroly.mnc840.mcc310.gprs.               IN      A       199.255.4.251
+
+; BHS2 Testing AW Sept 15 17
+bhs2.mnc840.mcc310.gprs.                IN      A       199.255.5.97
+
+; SBG Shinetown ppcom APN - (david 20180221)
+; ppcom.mnc840.mcc310.gprs.               IN      A       199.255.4.6
+; ppcom.mnc840.mcc310.gprs.               IN      A       199.255.4.134
+
+; for testing >2 dot apn on tvp (diyan 20180717)
+iot.dataxs.mobi.mnc840.mcc310.gprs.     IN      A       199.255.4.120
+iot.dataxs.mobi.mnc840.mcc310.gprs.     IN      A       199.255.4.124
+test.super.long.apn.com.mnc840.mcc310.gprs.     IN      A       199.255.4.120
+test.super.long.apn.com.mnc840.mcc310.gprs.     IN      A       199.255.4.124
+
+; RBX GGSN testing (calce 20180926)
+calce.mnc840.mcc310.gprs.               IN      A       10.26.201.125
+;calce.mnc840.mcc310.gprs.               IN      A       10.26.201.126
+
+;  apns for Shinetown TELNA-956 (abdul 20181025)
+ppcom2.mnc840.mcc310.gprs.          IN      A       199.255.4.6
+ppcom2.mnc840.mcc310.gprs.          IN      A       199.255.4.134
+
+ppcom.mnc840.mcc310.gprs.          IN      A       199.255.4.250
+ppcom.mnc840.mcc310.gprs.          IN      A       199.255.4.251
+
+altanwifi.mnc840.mcc310.gprs.          IN      A       199.255.4.90
+altanwifi.mnc840.mcc310.gprs.          IN      A       199.255.4.190
+
+pnd.mnc840.mcc310.gprs.          IN      A       199.255.4.90
+pnd.mnc840.mcc310.gprs.          IN      A       199.255.4.190
+
+esim.apn.mnc840.mcc310.gprs.          IN      A       199.255.4.90
+esim.apn.mnc840.mcc310.gprs.          IN      A       199.255.4.190
+
+joy.mnc840.mcc310.gprs.          IN      A       199.255.4.6
+joy.mnc840.mcc310.gprs.          IN      A       199.255.4.134
+
+; TELNA-983
+ppcom3.mnc840.mcc310.gprs.          IN      A       199.255.4.90
+ppcom3.mnc840.mcc310.gprs.          IN      A       199.255.4.190
+
+yyb.mnc840.mcc310.gprs.          IN      A       199.255.4.250
+yyb.mnc840.mcc310.gprs.          IN      A       199.255.4.251
+
+yyb2.mnc840.mcc310.gprs.          IN      A       199.255.4.6
+yyb2.mnc840.mcc310.gprs.          IN      A       199.255.4.134
+
+
+;TELNA-995
+joy2.mnc840.mcc310.gprs.          IN      A       199.255.4.250
+joy2.mnc840.mcc310.gprs.          IN      A       199.255.4.251
+
+;DNAS-37
+joytel.mnc840.mcc310.gprs.          IN      A       199.255.4.250
+joytel.mnc840.mcc310.gprs.          IN      A       199.255.4.251
+
+;Telna-tppnoc-1141
+;mbb.mobi-data.com.mnc840.mcc310.gprs.    IN  A 199.255.4.90
+mbb.mobi-data.com.mnc840.mcc310.gprs.    IN  A 199.255.4.190
+
+;usa.mobi-data.com.mnc840.mcc310.gprs.    IN  A 199.255.4.90
+usa.mobi-data.com.mnc840.mcc310.gprs.    IN  A 199.255.4.190
+
+eu.mobi-data.com.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+;eu.mobi-data.com.mnc840.mcc310.gprs.    IN  A 199.255.4.134
+
+;Telna-tppnoc-1269
+;globaldata.mnc840.mcc310.gprs.    IN  A 199.255.4.250
+;globaldata.mnc840.mcc310.gprs.    IN  A 199.255.4.251
+
+;telna-289
+;globaldata.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+;globaldata.mnc840.mcc310.gprs.    IN  A 199.255.4.134
+;globaldata.mnc840.mcc310.gprs.    IN  A 208.80.158.4
+;globaldata.mnc840.mcc310.gprs.    IN  A 208.80.158.5
+;globaldata.mnc840.mcc310.gprs.    IN  A 208.80.158.11
+;globaldata.mnc840.mcc310.gprs.    IN  A 208.80.158.12
+;globaldata.mnc840.mcc310.gprs.    IN  A 208.80.158.17
+globaldata.mnc840.mcc310.gprs.    IN  A 199.255.4.44
+globaldata.mnc840.mcc310.gprs.    IN  A 208.80.158.38
+
+;Telna-tppnoc-ajay
+kvh.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+kvh.mnc840.mcc310.gprs.    IN  A 199.255.4.134
+
+;Telna-tppnoc-ajay
+mobilenet.mnc840.mcc310.gprs.    IN  A 199.255.4.250
+mobilenet.mnc840.mcc310.gprs.    IN  A 199.255.4.251
+
+;Telna -tppnoc-ajay
+alphaamerica.mnc840.mcc310.gprs. IN  A 199.255.4.90
+alphaamerica.mnc840.mcc310.gprs. IN  A 199.255.4.190
+
+alphaapac.mnc840.mcc310.gprs. IN  A 199.255.4.250
+alphaapac.mnc840.mcc310.gprs. IN  A 199.255.4.251
+
+alphaeurope.mnc840.mcc310.gprs. IN  A 199.255.4.6
+alphaeurope.mnc840.mcc310.gprs. IN  A 199.255.4.134
+
+gotekplus.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+gotekplus.mnc840.mcc310.gprs.    IN  A 199.255.4.134
+
+
+;Telna-tppnoc-TELNA-1141
+
+;usa.mobi-data.com.mnc840.mcc310.gprs.    IN  A 199.255.4.90
+usa.mobi-data.com.mnc840.mcc310.gprs.    IN  A 199.255.4.190
+
+asia.mobi-data.com.mnc840.mcc310.gprs.    IN  A 199.255.4.250
+asia.mobi-data.com.mnc840.mcc310.gprs.    IN  A 199.255.4.251
+
+
+eu.mobi-data.com.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+;eu.mobi-data.com.mnc840.mcc310.gprs.    IN  A 199.255.4.134
+
+;Telna KRLEGACY-194 & TELNA117
+*.cgate.mnc840.mcc310.gprs.             IN  A 199.255.4.90
+*.cgate.mnc840.mcc310.gprs.             IN  A 199.255.4.190
+;globaldata.mnc840.mcc310.gprs.         IN  A 199.255.4.90
+;globaldata.mnc840.mcc310.gprs.         IN  A 199.255.4.190
+tn1.mnc840.mcc310.gprs.                 IN  A 199.255.4.90
+tn1.mnc840.mcc310.gprs.                 IN  A 199.255.4.190
+
+
+mvne.test.mnc840.mcc310.gprs.           IN  A 199.255.4.186
+mvne.test.mnc840.mcc310.gprs.           IN  A 199.255.4.187
+
+;for wildcard testing in dev GTP-Hub 2.0 (Juan 20200205)
+*.telna.com.mnc840.mcc310.gprs.    IN      A       199.255.4.125
+*.dev.mnc840.mcc310.gprs.          IN      A       199.255.4.125
+*.sbg.mnc840.mcc310.gprs.          IN      A       199.255.4.60
+*.rbx.mnc840.mcc310.gprs.          IN      A       199.255.4.61
+
+;TPPNOC-1816
+
+airalo1.mnc840.mcc310.gprs.    IN  A 199.255.4.90
+airalo1.mnc840.mcc310.gprs.    IN  A 199.255.4.190
+
+airalo3.mnc840.mcc310.gprs.    IN  A 199.255.4.250
+airalo3.mnc840.mcc310.gprs.    IN  A 199.255.4.251
+
+;airalo2.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+;airalo2.mnc840.mcc310.gprs.    IN  A 199.255.4.134
+airalo2.mnc840.mcc310.gprs.                  IN      A       208.80.158.4
+airalo2.mnc840.mcc310.gprs.                  IN      A       208.80.158.5
+airalo2.mnc840.mcc310.gprs.                  IN      A       208.80.158.11
+airalo2.mnc840.mcc310.gprs.                  IN      A       208.80.158.12
+airalo2.mnc840.mcc310.gprs.                  IN      A       208.80.158.17
+
+
+;iVENT TPPNOC-814
+;imd.mnc840.mcc310.gprs.    IN  A 199.255.4.31
+;imd.mnc840.mcc310.gprs.    IN  A 199.255.4.109
+imd.mnc840.mcc310.gprs.    IN  A 199.255.4.162
+imd.mnc840.mcc310.gprs.    IN  A 199.255.4.163
+
+; POLKOMTEL DNS
+
+;rh.polkomtel.mnc840.mcc310.gprs.    IN  A 208.80.158.4
+;rh.polkomtel.mnc840.mcc310.gprs.    IN  A 208.80.158.5
+;rh.polkomtel.mnc840.mcc310.gprs.    IN  A 208.80.158.11
+;rh.polkomtel.mnc840.mcc310.gprs.    IN  A 208.80.158.12
+;rh.polkomtel.mnc840.mcc310.gprs.    IN  A 208.80.158.17
+;rh.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.44
+rh.polkomtel.mnc840.mcc310.gprs.    IN  A 208.80.158.50
+rh.polkomtel.mnc840.mcc310.gprs.    IN  A 208.80.158.51
+
+doodad.polkomtel.mnc840.mcc310.gprs.    IN  A 208.80.159.221
+
+openroamer.com.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+openroamer.com.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.134
+
+esim.apn.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+esim.apn.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.134
+
+knowroaming.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+knowroaming.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.134
+
+teal.polkomtel.mnc840.mcc310.gprs.      IN  A 199.255.4.6
+teal.polkomtel.mnc840.mcc310.gprs.      IN  A 199.255.4.134
+*.teal.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+*.teal.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.134
+
+plus.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.5.177
+plus.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.5.178
+plus.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.5.179
+plus.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.5.180
+
+;globaldata.polkomtel.mnc840.mcc310.gprs.    IN  A 208.80.158.4
+;globaldata.polkomtel.mnc840.mcc310.gprs.    IN  A 208.80.158.5
+;globaldata.polkomtel.mnc840.mcc310.gprs.    IN  A 208.80.158.11
+;globaldata.polkomtel.mnc840.mcc310.gprs.    IN  A 208.80.158.12
+;globaldata.polkomtel.mnc840.mcc310.gprs.    IN  A 208.80.158.17
+globaldata.polkomtel.mnc840.mcc310.gprs.    IN  A 208.80.158.50
+globaldata.polkomtel.mnc840.mcc310.gprs.    IN  A 208.80.158.51
+
+mobi-data.com.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+mobi-data.com.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.134
+
+;TELNA-648  (Jose  20230306)
+;usa.mobi-data.com.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.90
+;usa.mobi-data.com.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.190
+usa.mobi-data.com.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.5.67
+
+internet.polkomtel.eu.mnc840.mcc310.gprs.    IN  A 208.80.158.4
+internet.polkomtel.eu.mnc840.mcc310.gprs.    IN  A 208.80.158.5
+internet.polkomtel.eu.mnc840.mcc310.gprs.    IN  A 208.80.158.11
+internet.polkomtel.eu.mnc840.mcc310.gprs.    IN  A 208.80.158.12
+internet.polkomtel.eu.mnc840.mcc310.gprs.    IN  A 208.80.158.17
+
+plus.polkomtel.eu.mnc840.mcc310.gprs.    IN  A 208.80.158.4
+plus.polkomtel.eu.mnc840.mcc310.gprs.    IN  A 208.80.158.5
+plus.polkomtel.eu.mnc840.mcc310.gprs.    IN  A 208.80.158.11
+plus.polkomtel.eu.mnc840.mcc310.gprs.    IN  A 208.80.158.12
+plus.polkomtel.eu.mnc840.mcc310.gprs.    IN  A 208.80.158.17
+
+mbb.mobi-data.com.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+;mbb.mobi-data.com.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.134
+
+tn2.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+tn2.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.134
+
+internet.polkomtel.mnc840.mcc310.gprs.  IN A 199.255.5.177
+internet.polkomtel.mnc840.mcc310.gprs.  IN A 199.255.5.178
+internet.polkomtel.mnc840.mcc310.gprs.  IN A 199.255.5.179
+internet.polkomtel.mnc840.mcc310.gprs.  IN A 199.255.5.180
+
+soracom.io.polkomtel.mnc840.mcc310.gprs. IN  A 199.255.4.6
+soracom.io.polkomtel.mnc840.mcc310.gprs. IN  A 199.255.4.134
+
+altanwifi.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.90
+;altanwifi.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.190
+altanwifi.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.5.67
+
+pnd.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.90
+pnd.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.5.67
+
+tn1.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.90
+;tn1.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.190
+;tn1.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.5.67
+tn1.polkomtel.mnc840.mcc310.gprs.    IN  A 74.118.64.73
+tn1.polkomtel.mnc840.mcc310.gprs.    IN  A 74.118.64.79
+
+fulmo.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.90
+;fulmo.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.190
+fulmo.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.5.67
+
+kroly.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.250
+kroly.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.251
+
+ppcom.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.250
+ppcom.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.251
+
+tn3.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.250
+tn3.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.251
+
+;alosim.polkomtel.mnc840.mcc310.gprs.  IN A 208.80.158.4
+;alosim.polkomtel.mnc840.mcc310.gprs.  IN A 208.80.158.5
+;alosim.polkomtel.mnc840.mcc310.gprs.  IN A 208.80.158.11
+;alosim.polkomtel.mnc840.mcc310.gprs.  IN A 208.80.158.12
+;alosim.polkomtel.mnc840.mcc310.gprs.  IN A 208.80.158.17
+;alosim.polkomtel.mnc840.mcc310.gprs.  IN A 208.80.158.64
+;alosim.polkomtel.mnc840.mcc310.gprs.  IN A 208.80.158.65
+
+alosim.polkomtel.mnc840.mcc310.gprs.  IN A 199.255.4.90
+alosim.polkomtel.mnc840.mcc310.gprs.  IN A 199.255.5.67
+
+
+rainbow.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+rainbow.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.134
+
+xroam.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+xroam.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.134
+
+ion.otm.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.172
+ion.otm.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.173
+
+gw.cgate.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+gw.cgate.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.134
+
+ppcom.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.90
+ppcom.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.5.67
+
+yoho.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+yoho.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.134
+
+simplex.iot.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+simplex.iot.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.134
+
+us.simplex.iot.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.90
+us.simplex.iot.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.5.67
+
+;TELNA-1228
+iboots.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+iboots.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.134
+
+;TELNA-1392
+jp1.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.90
+;jp1.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.190
+jp1.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.5.67
+;jp1.polkomtel.mnc840.mcc310.gprs.    IN  A 74.118.64.73
+;jp1.polkomtel.mnc840.mcc310.gprs.    IN  A 74.118.64.79
+
+jp2.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+jp2.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.134
+
+jp3.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.250
+jp3.polkomtel.mnc840.mcc310.gprs.    IN  A 199.255.4.251
+
+;TELNA-165
+
+teal.mnc840.mcc310.gprs.     IN  A 199.255.4.90
+teal.mnc840.mcc310.gprs.     IN  A 199.255.4.190
+*.teal.mnc840.mcc310.gprs.    IN  A 199.255.4.90
+*.teal.mnc840.mcc310.gprs.    IN  A 199.255.4.190
+
+;TPPNOC-763
+
+;alosim.mnc840.mcc310.gprs.      IN  A 199.255.4.90
+;alosim.mnc840.mcc310.gprs.      IN  A 199.255.4.190
+
+;TPPNOC-817
+;alosim.mnc840.mcc310.gprs.    IN  A 208.80.158.4
+;alosim.mnc840.mcc310.gprs.    IN  A 208.80.158.5
+;alosim.mnc840.mcc310.gprs.    IN  A 208.80.158.11
+alosim.mnc840.mcc310.gprs.    IN  A 199.255.4.44
+alosim.mnc840.mcc310.gprs.    IN  A 208.80.158.38
+
+xroam.mnc840.mcc310.gprs.       IN  A 199.255.4.90
+xroam.mnc840.mcc310.gprs.       IN  A 199.255.4.190
+
+;IMSI-X Deployment Testing
+ajay.mnc840.mcc310.gprs.      IN  A 199.255.4.103
+;ajay.mnc840.mcc310.gprs.      IN  A 199.255.4.104
+
+;Freeeway Telna-237
+iot.secure.mnc840.mcc310.gprs.    IN  A 199.255.4.31
+iot.secure.mnc840.mcc310.gprs.    IN  A 199.255.4.109
+
+;iOnline TELNA-399
+ion.otm.mnc840.mcc310.gprs.    IN  A 199.255.4.172
+ion.otm.mnc840.mcc310.gprs.    IN  A 199.255.4.173
+
+
+;Telna-524
+
+bws.br.mnc840.mcc310.gprs.    IN  A 199.255.4.124
+bws.br.mnc840.mcc310.gprs.    IN  A 199.255.4.130
+
+
+cntl.br.mnc840.mcc310.gprs.    IN  A 199.255.4.124
+cntl.br.mnc840.mcc310.gprs.    IN  A 199.255.4.130
+
+ensitec.brensitec.br.mnc840.mcc310.gprs.    IN  A 199.255.4.124
+ensitec.brensitec.br.mnc840.mcc310.gprs.    IN  A 199.255.4.130
+
+ensitec.br.mnc840.mcc310.gprs.    IN  A 199.255.4.124
+ensitec.br.mnc840.mcc310.gprs.    IN  A 199.255.4.130
+
+GPRSNAC.COM.BR.mnc840.mcc310.gprs.    IN  A 199.255.4.124
+GPRSNAC.COM.BR.mnc840.mcc310.gprs.    IN  A 199.255.4.130
+
+hunter.br.mnc840.mcc310.gprs.    IN  A 199.255.4.124
+hunter.br.mnc840.mcc310.gprs.    IN  A 199.255.4.130
+
+iot4u.br.mnc840.mcc310.gprs.    IN  A 199.255.4.124
+iot4u.br.mnc840.mcc310.gprs.    IN  A 199.255.4.130
+
+ituran.br.mnc840.mcc310.gprs.    IN  A 199.255.4.124
+ituran.br.mnc840.mcc310.gprs.    IN  A 199.255.4.130
+
+m2data.arqia.br.mnc840.mcc310.gprs.    IN  A 199.255.4.124
+m2data.arqia.br.mnc840.mcc310.gprs.    IN  A 199.255.4.130
+
+m2data.arqia.br.mnc840.mcc310.gprs.    IN  A 199.255.4.124
+m2data.arqia.br.mnc840.mcc310.gprs.    IN  A 199.255.4.130
+
+suhaivpn.arqia.br.mnc840.mcc310.gprs.   IN      A       199.255.4.124
+suhaivpn.arqia.br.mnc840.mcc310.gprs.   IN      A       199.255.4.130
+
+multigetrak.br.mnc840.mcc310.gprs.    IN  A 199.255.4.124
+multigetrak.br.mnc840.mcc310.gprs.    IN  A 199.255.4.130
+
+rastcar.br.mnc840.mcc310.gprs.    IN  A 199.255.4.124
+rastcar.br.mnc840.mcc310.gprs.    IN  A 199.255.4.130
+
+sumup.com.br.mnc840.mcc310.gprs.    IN  A 199.255.4.124
+sumup.com.br.mnc840.mcc310.gprs.    IN  A 199.255.4.130
+
+telmet.br.mnc840.mcc310.gprs.    IN  A 199.255.4.124
+telmet.br.mnc840.mcc310.gprs.    IN  A 199.255.4.130
+
+trucks.br.mnc840.mcc310.gprs.    IN  A 199.255.4.124
+trucks.br.mnc840.mcc310.gprs.    IN  A 199.255.4.130
+
+idemiacxn.br.mnc840.mcc310.gprs.    IN  A 199.255.4.124
+idemiacxn.br.mnc840.mcc310.gprs.    IN  A 199.255.4.130
+
+internet.lte.cxn.mnc840.mcc310.gprs.    IN  A 199.255.4.124
+internet.lte.cxn.mnc840.mcc310.gprs.    IN  A 199.255.4.130
+
+scania.apn3.cxn.mnc840.mcc310.gprs.    IN  A 199.255.4.124
+scania.apn3.cxn.mnc840.mcc310.gprs.    IN  A 199.255.4.130
+
+scania.fmptest.cxn.mnc840.mcc310.gprs.    IN  A 199.255.4.124
+scania.fmptest.cxn.mnc840.mcc310.gprs.    IN  A 199.255.4.130
+
+adyen.m2m.mnc840.mcc310.gprs.    IN  A 199.255.4.124
+adyen.m2m.mnc840.mcc310.gprs.    IN  A 199.255.4.130
+
+virtueyes.com.br.mnc840.mcc310.gprs.    IN  A 199.255.4.124
+virtueyes.com.br.mnc840.mcc310.gprs.    IN  A 199.255.4.130
+
+cpfl.arqia.br.mnc840.mcc310.gprs.    IN  A 199.255.4.124
+cpfl.arqia.br.mnc840.mcc310.gprs.    IN  A 199.255.4.130
+
+agora.iot.br.mnc840.mcc310.gprs.    IN  A 199.255.4.124
+agora.iot.br.mnc840.mcc310.gprs.    IN  A 199.255.4.130
+
+credishop.arqia.br.mnc840.mcc310.gprs.    IN  A 199.255.4.124
+credishop.arqia.br.mnc840.mcc310.gprs.    IN  A 199.255.4.130
+
+
+; TELNA-530
+nearshore.mnc840.mcc310.gprs.    IN  A 199.255.4.90
+nearshore.mnc840.mcc310.gprs.    IN  A 199.255.4.190
+
+boost.mnc840.mcc310.gprs.          IN      A       199.255.4.90
+boost.mnc840.mcc310.gprs.          IN      A       199.255.4.190
+
+
+;telna-651
+;isp.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+;isp.mnc840.mcc310.gprs.    IN  A 199.255.4.134
+;isp.mnc840.mcc310.gprs.    IN  A 208.80.158.4
+;isp.mnc840.mcc310.gprs.    IN  A 208.80.158.5
+;isp.mnc840.mcc310.gprs.    IN  A 208.80.158.11
+;isp.mnc840.mcc310.gprs.    IN  A 208.80.158.12
+;isp.mnc840.mcc310.gprs.    IN  A 208.80.158.17
+isp.mnc840.mcc310.gprs.    IN  A 199.255.4.44
+isp.mnc840.mcc310.gprs.    IN  A 208.80.158.38
+
+;5G tests to EU wholesale
+5gtest.mnc840.mcc310.gprs.         IN      A       199.255.4.6
+5gtest.mnc840.mcc310.gprs.         IN      A       199.255.4.134
+
+5gtests.mnc840.mcc310.gprs.         IN      A       199.255.4.6
+5gtests.mnc840.mcc310.gprs.         IN      A       199.255.4.134
+
+; new core
+;newcore.mnc840.mcc310.gprs.         IN      A       208.80.158.4
+;newcore.mnc840.mcc310.gprs.         IN      A       208.80.158.5
+newcore.mnc840.mcc310.gprs.         IN      A       208.80.158.11
+
+;Freeeway Telna-765
+agora.iot.mnc840.mcc310.gprs.    IN  A 199.255.4.31
+agora.iot.mnc840.mcc310.gprs.    IN  A 199.255.4.109
+
+;Yoho Mobile Telna-825
+yoho.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+yoho.mnc840.mcc310.gprs.    IN  A 199.255.4.134
+
+;zariot imsi02 IG-881
+connected.protected.mnc840.mcc310.gprs.    IN  A 208.80.158.25
+connected.protected.mnc840.mcc310.gprs.    IN  A 208.80.158.26
+
+; jiociot imsi02 TELNA-819
+jiociot.mnc840.mcc310.gprs.    IN  A 208.80.158.30
+jiociot.mnc840.mcc310.gprs.    IN  A 208.80.158.31
+
+
+; KATA-889 imsi02
+;testpgw.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+testpgw.mnc840.mcc310.gprs.    IN  A 208.80.158.224
+testpgw.mnc840.mcc310.gprs.    IN  A 208.80.158.225
+
+;test-DFW-imsi02-KATA-889
+;testdfw.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+testdfw.mnc840.mcc310.gprs.    IN  A 199.255.4.44
+
+;TELNA-1228
+iboots.mnc840.mcc310.gprs.    IN  A 199.255.4.6
+iboots.mnc840.mcc310.gprs.    IN  A 199.255.4.134
+
+;TELNA-1234
+ppinternet4gd.gdsp.mnc840.mcc310.gprs.    IN  A 208.80.158.40
+ppinternet4gd.gdsp.mnc840.mcc310.gprs.    IN  A 208.88.158.40
+
+;CCN
+mwc24.mnc840.mcc310.gprs.        IN  A 208.80.158.50
+novus.mnc840.mcc310.gprs.        IN  A 208.80.158.50
+novus.par.mnc840.mcc310.gprs.    IN  A 208.80.158.51
+novus.dfw.mnc840.mcc310.gprs.    IN  A 208.80.158.37
+
+;Cennso
+novus.tvp.ams.mnc840.mcc310.gprs.    IN  A 208.80.158.32
+
+;TELNA-1392
+jp1.mnc840.mcc310.gprs.                 IN  A 199.255.4.90
+jp1.mnc840.mcc310.gprs.                 IN  A 199.255.4.190
+
+jp2.mnc840.mcc310.gprs.                 IN  A 199.255.4.6
+jp2.mnc840.mcc310.gprs.                 IN  A 199.255.4.134
+
+jp3.mnc840.mcc310.gprs.                 IN  A 199.255.4.250
+jp3.mnc840.mcc310.gprs.                 IN  A 199.255.4.251
+
+;Test IMSI02 SGP2 PGWs 20240612 TELNA-1441
+novus.pgw.sgp2.mnc840.mcc310.gprs.      IN  A 208.80.158.72
+novus.pgw.sgp2.mnc840.mcc310.gprs.      IN  A 208.80.158.73

@@ -1,0 +1,163 @@
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+// include "/etc/bind/zones.rfc1918";
+
+acl orange {
+  10.26.0.247/32;
+  10.92.0.83/32;
+  10.26.0.110/32;
+  80.10.181.161/32;
+  80.10.181.162/32;
+  80.10.181.163/32;
+  80.10.181.164/32;
+  80.10.181.165/32;
+  80.10.181.65/32;
+  80.10.181.66/32;
+  80.10.181.67/32;
+  80.10.181.68/32;
+  80.10.181.69/32;
+  212.234.96.0/24;
+};
+
+view "orange" {
+  match-clients {orange;};
+  zone "mnc840.mcc310.gprs" IN {
+    type master;
+    file "/etc/bind/orange/mnc840.mcc310.gprs.zone";
+    allow-transfer {10.92.0.83;};
+    also-notify { 10.92.0.83; };
+    allow-update { none; };
+    forwarders {};
+  };
+
+  zone "mnc840.mcc310.3gppnetwork.org" IN {
+    type master;
+    file "/etc/bind/orange/mnc840.mcc310.3gppnetwork.org.zone";
+    allow-transfer {10.92.0.83;};
+    also-notify { 10.92.0.83; };
+    allow-update { none; };
+
+    forwarders {};
+  };
+
+  zone "epc.mnc840.mcc310.3gppnetwork.org" IN {
+    type master;
+    file "/etc/bind/orange/epc.mnc840.mcc310.3gppnetwork.org.zone";
+    allow-transfer {10.92.0.83;};
+    also-notify { 10.92.0.83; };
+    allow-update { none; };
+    forwarders {};
+  };
+
+
+  zone "apn.epc.mnc840.mcc310.3gppnetwork.org" IN {
+    type master;
+    file "/etc/bind/orange/apn.epc.mnc840.mcc310.3gppnetwork.org.zone";
+    allow-transfer {10.92.0.83;};
+    also-notify { 10.92.0.83; };
+    allow-update { none; };
+
+    forwarders {};
+  };
+
+};
+
+
+acl tele2 {
+10.92.0.211/32;
+199.255.5.45/32;
+130.244.209.6/32;
+130.244.209.14/32;
+
+};
+
+view "tele2" {
+match-clients {tele2;};
+zone "mnc840.mcc310.gprs" IN {
+  type master; 
+  file "/etc/bind/tele2/mnc840.mcc310.gprs.zone";
+  allow-transfer {10.92.0.211;};
+  also-notify { 10.92.0.211; };
+  allow-update { none; };
+  forwarders {};
+};
+
+zone "mnc840.mcc310.3gppnetwork.org" IN {
+  type master;
+  file "/etc/bind/tele2/mnc840.mcc310.3gppnetwork.org.zone";
+  allow-transfer {10.92.0.211;};
+  also-notify { 10.92.0.211; };
+  allow-update { none; };
+  forwarders {};
+};
+
+zone "epc.mnc840.mcc310.3gppnetwork.org" IN {
+  type master;
+  file "/etc/bind/tele2/epc.mnc840.mcc310.3gppnetwork.org.zone";
+  allow-transfer {10.92.0.211;};
+  also-notify { 10.92.0.211; };
+  allow-update { none; };
+  forwarders {};
+};
+
+
+zone "apn.epc.mnc840.mcc310.3gppnetwork.org" IN {
+  type master;
+  file "/etc/bind/tele2/apn.epc.mnc840.mcc310.3gppnetwork.org.zone";
+  allow-transfer {10.92.0.211;};
+  also-notify { 10.92.0.211; };
+  allow-update { none; };
+  forwarders {};
+};
+
+};
+
+view "all" {
+match-clients {any;};
+
+zone "mnc840.mcc310.gprs" IN {
+  type master;
+  file "/etc/bind/zones/mnc840.mcc310.gprs.zone";
+  allow-transfer {10.92.0.210;};
+  also-notify { 10.92.0.210; };
+  allow-update { none; };
+  forwarders {};
+};
+
+
+
+// for Telna LTE (diyan 22jul2015)
+zone "mnc840.mcc310.3gppnetwork.org" IN {
+  type master;
+  file "/etc/bind/zones/mnc840.mcc310.3gppnetwork.org.zone";
+  allow-transfer {10.92.0.210;};
+  also-notify { 10.92.0.210; };
+  allow-update { none; };
+  forwarders {};
+};
+
+// for Telna LTE epc (diyan 22jul2015)
+zone "epc.mnc840.mcc310.3gppnetwork.org" IN {
+  type master;
+  file "/etc/bind/zones/epc.mnc840.mcc310.3gppnetwork.org.zone";
+  allow-transfer {10.92.0.210;};
+  also-notify { 10.92.0.210; };
+  allow-update { none; };
+  forwarders {};
+};
+
+// for Telna LTE apn (diyan 22jul2015)
+zone "apn.epc.mnc840.mcc310.3gppnetwork.org" IN {
+  type master;
+  file "/etc/bind/zones/apn.epc.mnc840.mcc310.3gppnetwork.org.zone";
+  allow-transfer {10.92.0.210;};
+  also-notify { 10.92.0.210; };
+  allow-update { none; };
+  forwarders {};
+};
+
+};

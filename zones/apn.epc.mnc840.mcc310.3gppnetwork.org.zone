@@ -1,0 +1,411 @@
+$TTL 600        ; TTL for all records in the file is 10 mins; many caching DNS nameservers set their own TTLs regardless of the authoritative records,
+                ; so it cannot be guaranteed that all downstream DNS servers have the new records, after the TTL has expired
+
+
+@       IN      SOA     dns0.mnc840.mcc310.3gppnetwork.org.     hostmaster.telna.com. (
+        2024090402      ; serial
+        600             ; time after which the secondary or slave DNS server for this domain re-fetches the SOA record for this zone
+        600             ; retry interval if the slave will take, in case of a failure
+        604800          ; if slaves cannot reach us, they will cache for a week before expunging the record and return "domain does not exist"
+        600 )           ; duration for which caching name servers will cache the NXDOMAIN value
+
+        IN      NS      dns0.mnc840.mcc310.3gppnetwork.org.
+        IN      NS      dns1.mnc840.mcc310.3gppnetwork.org.
+
+@       IN      NS      dns0.mnc840.mcc310.3gppnetwork.org.
+dns0    IN      A       10.65.0.84
+
+
+
+;        IN      A       199.255.4.73
+;*       IN      A       199.255.4.73
+
+
+
+; for LTE testing by AJ with P4 (diyan 18dec2015)
+; added :x-gp to enable Gp interface (diyan 20180907)
+;doodad          IN      NAPTR   100 100 "s" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw-list-test.node.epc.mnc840.mcc310.3gppnetwork.org.
+;doodad          IN      NAPTR   100 100 "s" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw-list-testsgp.node.epc.mnc840.mcc310.3gppnetwork.org.
+;ajay.doodad          IN      NAPTR   100 100 "s" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw-list-testsgp.node.epc.mnc840.mcc310.3gppnetwork.org.
+ajay.doodad.test          IN      NAPTR   100 100 "s" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw-list-testsgp.node.epc.mnc840.mcc310.3gppnetwork.org.
+doodad          IN      NAPTR   100 100 "s" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw-dev.node.epc.mnc840.mcc310.3gppnetwork.org.
+;ajay.doodad          IN      NAPTR   100 100 "s" "x-3gpp-pgw:x-s8-gtp:x-gp" "" kanata.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+ajay.doodad          IN      NAPTR   100 100 "s" "x-3gpp-pgw:x-s8-gtp:x-gp" "" kanatac1.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+excelsior       IN      NAPTR   100 100 "s" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw-list-2.node.epc.mnc840.mcc310.3gppnetwork.org.
+*.excelsior     IN      NAPTR   100 100 "s" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw-list-2.node.epc.mnc840.mcc310.3gppnetwork.org.
+																														  
+
+; for singapore (calce 20180927)
+kroly   IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" sgp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+*       IN      NAPTR   100 100 "s" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw-list-1.node.epc.mnc840.mcc310.3gppnetwork.org.
+*.com   IN      NAPTR   100 100 "s" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw-list-1.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+; for shinetown (abdul 20181025 TPPNOC-957)
+ppcom   IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" sgp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+altanwifi IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+pnd       IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+esim.apn IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+airalo1  IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+airalo3   IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" sgp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;airalo2  IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+;airalo2   IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" imsi02.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;airalo2   IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" imsi02.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+airalo2   IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+airalo2   IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw2.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+airalo2   IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" pgw.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+airalo2   IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" pgw2.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+ppcom2 IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+joy  IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+; TELNA-983 (ABDUL)
+ppcom3    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+yyb IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" sgp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+yyb2 IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+joy2 IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" sgp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+joytel IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" sgp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;TPPNOC-1141
+;mbb.mobi-data.com    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp-2.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+;usa.mobi-data.com    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp-2.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+mbb.mobi-data.com    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" dfw2.imsi2.node.epc.mnc840.mcc310.3gppnetwork.org.
+usa.mobi-data.com    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" dfw2.imsi2.node.epc.mnc840.mcc310.3gppnetwork.org.
+;eu.mobi-data.com    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+eu.mobi-data.com    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" glogalgig.eu.ams.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;TELNA-1352
+nzmoeapn   IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" sgp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+
+;TPPNOC-1269
+;globaldata IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" sgp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;TELNA-289
+;globaldata IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+;globaldata IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;globaldata IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" pgw.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;globaldata IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw2.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;globaldata IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" pgw2.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+globaldata IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" kanata.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+globaldata IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" kanata.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+globaldata IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" kanatac1.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+globaldata IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" kanatac1.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+
+;TPPNOC-1331
+mobilenet IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" sgp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;TELNA-1107
+alphaamerica IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+alphaapac  IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" sgp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+alphaeurope IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;TPPNOC-1117
+gotekplus IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;Telna KRLEGACY-194 & TELNA117
+*.cgate         IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+;globaldata     IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+tn1             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+
+;for wildcard testing in dev GTP-Hub 2.0 (Juan 20200205)
+*.telna.com     IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" dev-gtphub2.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+*.dev           IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" dev-gtphub2.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+*.sbg           IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" sbg-gtphub2.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+*.rbx           IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" rbx-gtphub2.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;TPPNOC-814 towards new TVP Prod PGWs (OCS)
+;imd            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" prd-tvp-pgw.rbx.node.epc.mnc840.mcc310.3gppnetwork.org.
+imd             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" prd-tvp-pgw.ash.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+
+
+;POLKOMTEL LTE DNS
+
+altanwifi.polkomtel          IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp-3.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+pnd.polkomtel                IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp-3.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+fulmo.polkomtel              IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp-3.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+tn1.polkomtel                IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp-3.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+;tn1.polkomtel                IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" kanatadfw-1.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+soracom.io.polkomtel         IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+knowroaming.polkomtel        IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+;rh.polkomtel                 IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+;rh.polkomtel                 IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+;rh.polkomtel                 IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;rh.polkomtel                 IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw2.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;rh.polkomtel                 IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" pgw.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;rh.polkomtel                 IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" pgw2.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;rh.polkomtel                 IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" kanata.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+;rh.polkomtel                 IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" kanata.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+rh.polkomtel                  IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" eb.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+rh.polkomtel                  IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" eb.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;rh.polkomtel                  IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" par.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;rh.polkomtel                  IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" par.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;doodad.polkomtel             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw-rbx-dev.node.epc.mnc840.mcc310.3gppnetwork.org.
+doodad.polkomtel             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp.ash.node.epc.mnc840.mcc310.3gppnetwork.org.
+doodad.polkomtel             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw.dfw.us.node.epc.mnc840.mcc310.3gppnetwork.org.
+;doodad.polkomtel             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" pgw-rbx-dev.node.epc.mnc840.mcc310.3gppnetwork.org.
+teal.polkomtel               IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+*.teal.polkomtel             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+internet.polkomtel           IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp.ash.node.epc.mnc840.mcc310.3gppnetwork.org.
+plus.polkomtel               IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp.ash.node.epc.mnc840.mcc310.3gppnetwork.org.
+openroamer.com.polkomtel     IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+esim.apn.polkomtel           IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+tn2.polkomtel                IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+;globaldata.polkomtel         IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+;globaldata.polkomtel         IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;globaldata.polkomtel         IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw2.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+globaldata.polkomtel           IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" eb.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;globaldata.polkomtel           IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" par.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+mobi-data.com.polkomtel      IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+;mbb.mobi-data.com.polkomtel  IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+mbb.mobi-data.com.polkomtel  IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" glogalgig.eu.ams.node.epc.mnc840.mcc310.3gppnetwork.org.
+;ppcom.polkomtel              IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" sgp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+ppcom.polkomtel               IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp-3.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+ppcom.polkomtel               IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp.ash.node.epc.mnc840.mcc310.3gppnetwork.org.
+tn3.polkomtel                IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" sgp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+kroly.polkomtel              IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" sgp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+;alosim.polkomtel             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+;alosim.polkomtel             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;alosim.polkomtel             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw2.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;alosim.polkomtel             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw.dfw.us.node.epc.mnc840.mcc310.3gppnetwork.org.
+alosim.polkomtel             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp-3.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+;internet.polkomtel.eu        IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+internet.polkomtel.eu        IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+internet.polkomtel.eu        IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw2.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;plus.polkomtel.eu            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+plus.polkomtel.eu            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+plus.polkomtel.eu            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw2.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+rainbow.polkomtel            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+xroam.polkomtel              IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+ion.otm.polkomtel            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ionline.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+gw.cgate.polkomtel           IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+;usa.mobi-data.com.polkomtel  IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp-2.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+usa.mobi-data.com.polkomtel  IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp-dfw2.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+yoho.polkomtel               IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+simplex.iot.polkomtel        IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+us.simplex.iot.polkomtel     IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp-3.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+
+
+;TELNA-1228
+iboots.polkomtel             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+;iboots.polkomtel             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw2.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;iboots.polkomtel             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" pgw2.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+iboots.polkomtel             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;TELNA-1392
+jp1.polkomtel             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp-3.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+jp1.polkomtel             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" ustvp-3.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+jp2.polkomtel             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+;jp2.polkomtel             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw2.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;jp2.polkomtel             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" pgw2.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+jp2.polkomtel             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+jp3.polkomtel             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" sgp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+jp3.polkomtel             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" sgp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+
+;TELNA-165
+teal   IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+*.teal IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;TPPNOC-763
+;alosim   IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;TELNA-817
+alosim IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" kanata.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+alosim IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" kanatac1.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+alosim IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" kanatac1.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+
+xroam   IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;IMSI-X-DEPLOYMENT
+ajay    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;Telna-237 Freeeway APN towards new TVP Prod VPN PGWs on EU
+iot.secure         IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" prd-tvp-pgw.rbx.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;TELNA-399
+ion.otm            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ionline.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+
+;Telna-524
+
+bws.br            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" datora.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+cntl.br            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" datora.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+ensitec.br            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" datora.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+GPRSNAC.COM.BR            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" datora.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+hunter.br            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" datora.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+iot4u.br            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" datora.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+ituran.br            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" datora.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+m2data.arqia.br            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" datora.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+suhaivpn.arqia.br   IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" datora.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+multigetrak.br            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" datora.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+rastcar.br            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" datora.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+sumup.com.br            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" datora.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+telmet.br            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" datora.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+trucks.br            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" datora.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+idemiacxn.br            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" datora.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+internet.lte.cxn            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" datora.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+scania.apn3.cxn            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" datora.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+scania.fmptest.cxn            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" datora.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+adyen.m2m            IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" datora.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+virtueyes.com.br    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" datora.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+cpfl.arqia.br    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" datora.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+agora.iot.br    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" datora.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+credishop.arqia.br    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" datora.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+; TELNA-530
+nearshore         IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+boost IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;isp IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+; 5G tests to Wholesale
+5gtest        IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+5gtests        IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+5gtests        IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+newcore        IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" ""             imsi02.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+newcore        IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" imsi02.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;knowroaming    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" ""             pgw.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;knowroaming    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" pgw.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;knowroaming    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" ""             pgw2.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;knowroaming    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" pgw2.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+knowroaming     IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" kanatac1.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+knowroaming    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" kanatac1.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+knowroaming    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" ""             kanata.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+knowroaming    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" kanata.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;knowroaming    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" ""             pgw02.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;knowroaming    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" pgw02.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;knowroaming    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" ""             kanata.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+;knowroaming    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" kanata.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+rh              IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" kanatac1.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+;rh             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" ""             pgw.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;rh             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" pgw.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;rh             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" ""             pgw2.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;rh             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" pgw2.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;rh             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" ""             pgw02.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;rh             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" pgw02.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+rh             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" ""             kanata.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+rh             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" kanata.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+
+isp             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" ""             kanata.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+isp             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" kanata.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+;isp             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" ""             pgw2.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;isp             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" pgw2.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+isp             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" ""             kanatac1.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+isp             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" kanatac1.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+internet              IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" kanatac1.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+internet             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" ""             kanata.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;Telna-765 Freeeway APN towards new TVP Prod VPN PGWs on EU
+agora.iot         IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" prd-tvp-pgw.rbx.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;Yoho Mobile Telna-825
+yoho    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;zariot imsi02 IG-881
+connected.protected  IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" ""             imsix.mvne.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+connected.protected  IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" imsix.mvne.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+; jiociot imsi02 TELNA-819
+jiociot              IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" ""             imsi02.mvne.asia.node.epc.mnc840.mcc310.3gppnetwork.org.
+jiociot              IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" imsi02.mvne.asia.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+
+
+;KATA-889 IMSI02
+
+;testpgw    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+testpgw    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" dfw.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;testdfw    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+testdfw    IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" kanata.imsix.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;TELNA-1228
+iboots IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+iboots IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" pgw.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+iboots IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw2.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+iboots IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" pgw2.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;TELNA-1234
+ppinternet4gd.gdsp IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" ""             imsi02.mvne.usa.node.epc.mnc840.mcc310.3gppnetwork.org.
+ppinternet4gd.gdsp IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" imsi02.mvne.usa.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;CCN
+mwc24 IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" eb.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+mwc24 IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" eb.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+novus IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" eb.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+novus IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" eb.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+novus.par IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" eb.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+novus.par IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" eb.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+novus.dfw IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" dfw.us.node.epc.mnc840.mcc310.3gppnetwork.org.
+novus.dfw IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" dfw.us.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;cennso
+novus.tvp.ams IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgwk8s.tvp.ams.node.epc.mnc840.mcc310.3gppnetwork.org.
+novus.tvp.ams IN  NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" pgwk8s.tvp.ams.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;TELNA-1392
+jp1             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" ustvp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+jp1             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" ustvp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+jp2             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+;jp2             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" pgw2.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+;jp2             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" pgw2.eu.node.epc.mnc840.mcc310.3gppnetwork.org.
+jp2             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" gtphub.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+jp3             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" sgp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+jp3             IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" sgp.ovh.node.epc.mnc840.mcc310.3gppnetwork.org.
+
+;Test IMSI02 SGP2 PGWs 20240612  TELNA-1441
+novus.pgw.sgp2  IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp+nc-nr:x-gp+nc-nr" "" imsi02.pgw.sgp2.node.epc.mnc840.mcc310.3gppnetwork.org.
+novus.pgw.sgp2  IN      NAPTR   100 100 "a" "x-3gpp-pgw:x-s8-gtp:x-gp" "" imsi02.pgw.sgp2.node.epc.mnc840.mcc310.3gppnetwork.org.

@@ -1,0 +1,147 @@
+$TTL 600        ; TTL for all records in the file is 10 mins; many caching DNS nameservers set their own TTLs regardless of the authoritative records,
+                ; so it cannot be guaranteed that all downstream DNS servers have the new records, after the TTL has expired
+
+$ORIGIN epc.mnc840.mcc310.3gppnetwork.org.
+
+@       IN      SOA     dns0.mnc840.mcc310.3gppnetwork.org.     hostmaster.telna.com. (
+        2024080602      ; serial
+        600             ; time after which the secondary or slave DNS server for this domain re-fetches the SOA record for this zone
+        600             ; retry interval if the slave will take, in case of a failure
+        604800          ; if slaves cannot reach us, they will cache for a week before expunging the record and return "domain does not exist"
+        600 )           ; duration for which caching name servers will cache the NXDOMAIN value
+
+        IN      NS      dns0.mnc840.mcc310.3gppnetwork.org.
+        IN      NS      dns1.mnc840.mcc310.3gppnetwork.org.
+
+        IN      A       10.65.0.84
+;*       IN      A       199.255.4.3
+
+; for LTE testing by AJ with P4 (diyan 18dec2015) (diyan 19jan2016) (diyan 25jan2016)
+pgw-rbx-dev.node            IN      A       208.80.159.221
+oggsn.las1.node         IN      A       199.255.4.197
+;ergw.ovh.node          IN      A       199.255.4.61
+ergw.ovh.node           IN      A       199.255.4.60
+ergwtest.ovh.node          IN      A       199.255.4.125
+;ergw.ovh.node          IN      A       199.255.4.125
+;ergw.ovh.node          IN      A       199.255.4.133
+sgp.ovh.node            IN      A       199.255.4.250
+sgp.ovh.node            IN      A       199.255.4.251
+sgp.kanata.node         IN      A       208.80.158.29
+gtphub.ovh.node         IN      A       199.255.4.6
+gtphub.ovh.node         IN      A       199.255.4.134
+;pgw.eu.node         IN      A       199.255.4.6
+;pgw.eu.node         IN      A       199.255.4.134
+pgw.eu.node         IN      A       208.80.158.4
+pgw.eu.node         IN      A       208.80.158.5
+pgw.eu.node         IN      A       208.80.158.11
+pgw2.eu.node         IN      A       208.80.158.12
+pgw2.eu.node         IN      A       208.80.158.17
+pgw02.eu.node         IN      A       208.80.158.4
+pgw.dfw.us.node         IN      A       208.80.158.64
+pgw.dfw.us.node         IN      A       208.80.158.65
+ustvp.ovh.node          IN      A       199.255.4.90
+ustvp.ovh.node          IN      A       199.255.4.190
+ustvp-3.ovh.node          IN      A       199.255.4.90
+ustvp-3.ovh.node          IN      A       199.255.5.67
+dfw2.imsi2.node          IN      A       199.255.4.190
+;ustvp.ovh.node          IN      A       199.255.5.67
+ustvp-2.ovh.node        IN      A       199.255.4.90
+ustvp-dfw2.node        IN      A       199.255.5.67
+ltetest.hly.node        IN      A       217.109.153.235
+;tele2 nodes
+tele2.us.node         IN      A       199.255.5.122
+tele2.us.node         IN      A       199.255.5.123
+
+;gg ams
+glogalgig.eu.ams.node   IN      A       199.255.4.6
+tele2.eu.node         IN      A        199.255.5.120
+tele2.eu.node         IN      A        199.255.5.121
+
+tele2.asia.node         IN      A        199.255.5.124
+tele2.asia.node         IN      A        199.255.5.125
+
+ustvp.ash.node          IN      A       199.255.5.177
+ustvp.ash.node          IN      A       199.255.5.178
+ustvp.ash.node          IN      A       199.255.5.179
+ustvp.ash.node          IN      A       199.255.5.180
+
+pgw-list-1.node 600     IN      SRV     100 100 2123 gtphub.ovh.node
+pgw-list-2.node 600     IN      SRV     100 100 2123 ergw.ovh.node
+pgw-list-test.node 600     IN      SRV     100 100 2123 ergwtest.ovh.node
+pgw-list-testsgp.node 600     IN      SRV     100 100 2123 sgp.kanata.node
+pgw-list-3.node 600     IN      SRV     100 100 2123 sgp.ovh.node
+pgw-list-4.node 600     IN      SRV     100 100 2123 ustvp.ovh.node
+pgw-list-5.node 600     IN      SRV     100 100 2123 tele2.eu.node
+pgw-list-6.node 600     IN      SRV     100 100 2123 tele2.us.node
+pgw-list-7.node 600     IN      SRV     100 100 2123 tele2.asia.node
+
+
+;for wildcard testing in dev GTP-Hub 2.0 (Juan 20200205)
+
+dev-gtphub2.ovh.node    IN      A       199.255.4.125
+sbg-gtphub2.ovh.node    IN      A       199.255.4.60
+rbx-gtphub2.ovh.node    IN      A       199.255.4.61
+
+;IMSI-X-DEPLOYMENT
+gtphub.imsix.node    IN      A       199.255.4.103
+;gtphub.imsix.node    IN      A       199.255.4.104
+kanata.imsix.node    IN      A       199.255.4.44
+kanatac1.imsix.node    IN      A       208.80.158.38
+
+;TPPNOC-814 towards new TVP Prod PGWs (OCS)
+prd-tvp-pgw.rbx.node    IN      A       199.255.4.31
+prd-tvp-pgw.rbx.node    IN      A       199.255.4.109
+prd-tvp-pgw.ash.node    IN      A       199.255.4.162
+prd-tvp-pgw.ash.node    IN      A       199.255.4.163
+
+;TELNA-399
+ionline.eu.node         IN      A       199.255.4.172
+ionline.eu.node         IN      A       199.255.4.173
+
+
+;Telna-524
+
+datora.eu.node         IN      A        199.255.4.124
+datora.eu.node         IN      A        199.255.4.130
+
+;imsi02
+;imsi02.eu.node        IN      A        208.80.158.4
+;imsi02.eu.node        IN      A        208.80.158.5
+imsi02.eu.node        IN      A        208.80.158.11
+
+;zariot imsi02 IG-881
+imsix.mvne.eu.node    IN      A        208.80.158.25
+imsix.mvne.eu.node    IN      A        208.80.158.26
+
+; jiociot imsi02 TELNA-819
+imsi02.mvne.asia.node IN      A        208.80.158.30
+imsi02.mvne.asia.node IN      A        208.80.158.31
+
+
+;IMSI25 to Ash and DFW Kanata tn1.polkomtel
+
+kanatadfw-1.ovh.node          IN      A       74.118.64.73
+kanatadfw-1.ovh.node          IN      A       74.118.64.76
+kanatadfw-1.ovh.node          IN      A       199.255.4.90
+
+;TELNA-1234
+imsi02.mvne.usa.node IN      A        208.80.158.40
+imsi02.mvne.usa.node IN      A        208.80.158.41
+
+
+;Test IMSI02 DFW PGWs
+dfw.imsix.node    IN      A       208.80.158.224
+dfw.imsix.node    IN      A       208.80.158.225
+
+;CCN
+eb.eu.node     IN      A       208.80.158.50
+eb.eu.node     IN      A       208.80.158.51
+;par.eu.node    IN      A       208.80.158.51
+dfw.us.node    IN      A       208.80.158.37
+
+;Cennso:
+pgwk8s.tvp.ams.node    IN      A       208.80.158.32
+
+;Test IMSI02 SGP2 PGWs 20240612 TELNA-1441
+imsi02.pgw.sgp2.node IN      A         208.80.158.72
+imsi02.pgw.sgp2.node IN      A         208.80.158.73

@@ -1,0 +1,17 @@
+$TTL 600        ; TTL for all records in the file is 10 mins; many caching DNS nameservers set their own TTLs regardless of the authoritative records,
+                ; so it cannot be guaranteed that all downstream DNS servers have the new records, after the TTL has expired
+
+$ORIGIN mnc840.mcc310.3gppnetwork.org.
+
+@       IN      SOA     dns0.mnc840.mcc310.3gppnetwork.org.     hostmaster.telna.com. (
+        2023111502      ; serial
+        600             ; time after which the secondary or slave DNS server for this domain re-fetches the SOA record for this zone
+        600             ; retry interval if the slave will take, in case of a failure
+        604800          ; if slaves cannot reach us, they will cache for a week before expunging the record and return "domain does not exist"
+        600 )           ; duration for which caching name servers will cache the NXDOMAIN value
+
+        IN      NS      dns0.mnc840.mcc310.3gppnetwork.org.
+;        IN      NS      dns1.mnc840.mcc310.3gppnetwork.org.
+
+dns0    IN      A       10.65.0.84
+;dns1    IN      A       199.255.4.74
